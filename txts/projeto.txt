@@ -1,0 +1,300 @@
+Projeto
+
+Otimização computacional de componentes aerodinâmicos simplificados inspirados na Fórmula 1
+
+Resumo
+
+Este projeto consiste no desenvolvimento de uma aplicação capaz de modelar, analisar e otimizar componentes aerodinâmicos simplificados inspirados na Fórmula 1, com foco principal em asas de geometria paramétrica. O sistema permitirá alterar diferentes parâmetros geométricos e operacionais, como ângulo de ataque, área de referência, curvatura e velocidade, estimando o impacto dessas alterações em métricas como arrasto aerodinâmico, carga aerodinâmica e eficiência.
+
+Além da simulação simplificada, a aplicação deverá incluir um módulo de otimização capaz de procurar automaticamente configurações com melhor compromisso entre downforce e drag. O resultado final será uma plataforma interativa que combina modelação, cálculo, visualização de resultados e exploração automática de soluções.
+
+O projeto pretende demonstrar como técnicas de engenharia informática podem ser aplicadas a um problema inspirado na engenharia automóvel, recorrendo a algoritmos, desenvolvimento de software, análise de dados e visualização interativa.
+
+⸻
+
+Ideia principal
+
+A ideia não é reproduzir a aerodinâmica real de um carro de Fórmula 1 com fidelidade profissional, porque isso seria demasiado complexo para uma pessoa só. A ideia é criar um modelo simplificado mas coerente, que permita explorar relações entre geometria e comportamento aerodinâmico, e depois usar técnicas computacionais para encontrar configurações melhores.
+
+Ou seja, o valor do projeto está em:
+	•	construir um sistema funcional
+	•	modelar o problema de forma inteligente
+	•	permitir experiências com diferentes configurações
+	•	automatizar a procura de soluções boas
+
+⸻
+
+Objetivo geral
+
+Desenvolver uma aplicação interativa para simulação e otimização de componentes aerodinâmicos simplificados inspirados na Fórmula 1, permitindo avaliar o efeito de diferentes parâmetros geométricos no arrasto, carga aerodinâmica e eficiência aerodinâmica.
+
+⸻
+
+Objetivos específicos
+	•	Criar um modelo simplificado de componente aerodinâmico, com parâmetros ajustáveis.
+	•	Implementar fórmulas e regras de cálculo que permitam estimar drag e downforce.
+	•	Desenvolver uma interface onde seja possível testar diferentes configurações.
+	•	Apresentar os resultados através de gráficos e métricas comparativas.
+	•	Implementar um algoritmo de otimização para encontrar configurações vantajosas.
+	•	Guardar resultados de testes para análise posterior.
+	•	Produzir uma aplicação utilizável, clara e visualmente organizada.
+
+⸻
+
+Problema que o projeto tenta resolver
+
+Quando se altera a geometria de um elemento aerodinâmico, normalmente ganha-se numa coisa e perde-se noutra. Por exemplo:
+	•	mais downforce pode significar mais drag
+	•	menos drag pode reduzir aderência aerodinâmica
+	•	determinadas combinações podem ser mais eficientes em certos cenários de velocidade
+
+O projeto tenta resolver isso através de um sistema que permita:
+	•	testar rapidamente várias configurações
+	•	observar o impacto das mudanças
+	•	comparar resultados
+	•	procurar automaticamente combinações mais eficientes
+
+⸻
+
+Âmbito realista para fazer sozinho
+
+Para não explodir em complexidade, o projeto deve assumir desde início algumas simplificações:
+	•	trabalhar apenas com componentes simplificados, não com o carro todo
+	•	focar-se inicialmente numa asa 2D ou pseudo-3D
+	•	usar um modelo aerodinâmico simplificado, em vez de CFD real logo de início
+	•	deixar CFD ou validações mais avançadas como extensão futura
+
+Isto torna o projeto perfeitamente viável para uma pessoa só.
+
+⸻
+
+Funcionalidades principais
+
+A aplicação pode incluir estas funcionalidades:
+
+1. Definição da geometria
+
+O utilizador escolhe ou altera parâmetros como:
+	•	ângulo de ataque
+	•	comprimento da asa
+	•	altura
+	•	curvatura
+	•	área de referência
+	•	velocidade do escoamento
+
+2. Cálculo aerodinâmico simplificado
+
+O sistema calcula valores estimados para:
+	•	drag
+	•	downforce
+	•	eficiência aerodinâmica
+	•	comparação entre configurações
+
+3. Visualização
+
+Mostrar:
+	•	gráficos de drag vs downforce
+	•	evolução de métricas
+	•	tabelas comparativas
+	•	ranking de melhores soluções
+
+4. Otimização automática
+
+O sistema testa combinações de parâmetros e tenta encontrar:
+	•	máximo downforce
+	•	mínimo drag
+	•	melhor equilíbrio entre ambos
+
+5. Histórico de experiências
+
+Guardar configurações testadas e respetivos resultados.
+
+⸻
+
+Arquitetura do projeto
+
+Uma boa divisão seria esta:
+
+Módulo 1 — Modelação
+
+Responsável por representar a geometria e os parâmetros da asa.
+
+Módulo 2 — Cálculo
+
+Responsável por aplicar o modelo simplificado e calcular métricas.
+
+Módulo 3 — Otimização
+
+Responsável por testar múltiplas combinações e encontrar melhores soluções.
+
+Módulo 4 — Interface
+
+Responsável pela interação com o utilizador e pela apresentação dos resultados.
+
+Módulo 5 — Persistência
+
+Responsável por guardar testes, resultados e configurações.
+
+⸻
+
+Tecnologias recomendadas
+
+Para fazeres isto sozinho, eu recomendava uma stack simples e eficaz:
+
+Opção mais prática
+	•	Python
+	•	Streamlit para a interface
+	•	NumPy para cálculos
+	•	Pandas para tabelas e dados
+	•	Matplotlib ou Plotly para gráficos
+	•	SQLite para guardar resultados
+
+Esta opção é a melhor se quiseres avançar mais rápido.
+
+Opção mais “software engineering”
+	•	FastAPI no backend
+	•	React no frontend
+	•	PostgreSQL
+	•	Python para o motor de cálculo
+
+Esta fica mais bonita em currículo, mas dá mais trabalho.
+
+Para fazeres sozinho, eu ia mesmo de Python + Streamlit.
+
+⸻
+
+Metodologia de desenvolvimento
+
+Podes seguir esta ordem:
+
+Fase 1 — Pesquisa e definição
+	•	perceber que parâmetros vais usar
+	•	definir simplificações
+	•	decidir que métricas vais calcular
+
+Fase 2 — Modelo inicial
+	•	criar as estruturas de dados
+	•	implementar um cálculo simplificado
+	•	testar se os valores variam de forma lógica
+
+Fase 3 — Interface
+	•	criar sliders e inputs
+	•	mostrar resultados visuais
+	•	permitir comparação entre soluções
+
+Fase 4 — Otimização
+	•	implementar algoritmo que explore o espaço de parâmetros
+	•	mostrar os melhores resultados
+
+Fase 5 — Melhorias
+	•	guardar histórico
+	•	exportar resultados
+	•	melhorar apresentação
+	•	refinar fórmulas
+
+⸻
+
+Algoritmos de otimização possíveis
+
+Como estás sozinho, não vale a pena complicar demasiado no início.
+
+Melhor para começar
+
+Grid Search
+	•	defines intervalos para os parâmetros
+	•	testas combinações
+	•	guardas as melhores
+
+É simples e funciona.
+
+Depois, se quiseres melhorar
+	•	algoritmo genético
+	•	simulated annealing
+	•	otimização multiobjetivo
+
+Mas para uma primeira versão, grid search já chega perfeitamente.
+
+⸻
+
+Exemplo de funcionamento do sistema
+
+O utilizador entra na aplicação e:
+	•	escolhe os parâmetros da asa
+	•	vê os valores calculados
+	•	compara várias configurações
+	•	pede ao sistema para encontrar melhores combinações
+	•	observa os resultados em gráfico e tabela
+
+No fundo, a aplicação funciona como uma pequena ferramenta de exploração aerodinâmica simplificada.
+
+⸻
+
+Resultados esperados
+
+No final, deves ter:
+	•	uma aplicação funcional
+	•	uma interface interativa
+	•	um motor de cálculo simplificado
+	•	um módulo de otimização
+	•	gráficos e comparações
+	•	um conjunto de testes guardados
+
+Mesmo sem CFD real, isto já é um projeto muito bom.
+
+⸻
+
+Limitações assumidas
+
+É importante dizer logo isto, porque dá maturidade ao projeto:
+	•	o modelo não pretende reproduzir com exatidão a aerodinâmica real da Fórmula 1
+	•	os resultados são aproximações simplificadas
+	•	o foco está na análise computacional e otimização, não na validação física de alto nível
+	•	não será simulada a totalidade do carro nem fenómenos muito complexos de escoamento
+
+Estas limitações não enfraquecem o projeto — na verdade tornam-no mais honesto e realista.
+
+⸻
+
+Possíveis extensões futuras
+
+Se um dia quiseres evoluir isto:
+	•	integrar CFD simplificado
+	•	usar OpenFOAM para validar alguns casos
+	•	comparar várias peças aerodinâmicas
+	•	adicionar restrições inspiradas em regulamentos
+	•	criar um modo de recomendação automática
+	•	usar machine learning para prever resultados sem recalcular tudo
+
+⸻
+
+Porque é um bom projeto para Engenharia Informática
+
+Este projeto mostra várias competências ao mesmo tempo:
+	•	programação
+	•	modelação de problemas
+	•	estruturação de software
+	•	algoritmos
+	•	otimização
+	•	visualização de dados
+	•	desenvolvimento de interface
+
+E ainda por cima está ligado a um tema diferenciador, que é a Fórmula 1.
+
+⸻
+
+Versão curta para apresentar a alguém
+
+Vou desenvolver uma aplicação em Python que permita modelar e otimizar componentes aerodinâmicos simplificados inspirados na Fórmula 1. O sistema permitirá alterar parâmetros geométricos, calcular métricas como drag e downforce, visualizar resultados e procurar automaticamente configurações mais eficientes através de algoritmos de otimização. O foco do projeto será a componente computacional, interativa e analítica, e não a simulação física de alta fidelidade.
+
+⸻
+
+Nome mais “apresentável”
+
+Se quiseres um nome mais bonito:
+	•	AeroF1
+	•	F1 Aero Optimizer
+	•	DownforceLab
+	•	AeroSim F1
+	•	F1 Wing Optimizer
+
+Eu escolheria AeroF1 ou DownforceLab.

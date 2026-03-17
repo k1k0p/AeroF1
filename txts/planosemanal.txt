@@ -1,0 +1,411 @@
+ou assumir uma versão de projeto com:
+	•	Python
+	•	Streamlit
+	•	NumPy / Pandas
+	•	Matplotlib ou Plotly
+	•	SQLite ou JSON
+	•	modelo aerodinâmico simplificado
+
+Plano de desenvolvimento do projeto
+
+Semana 1 — Definir bem o projeto
+
+Nesta fase o objetivo é deixares de ter só uma ideia e passares a ter um projeto com fronteiras claras.
+
+O que fazes
+	•	escolher o nome do projeto
+	•	escrever uma descrição curta
+	•	decidir exatamente o que vais simular
+	•	decidir quais são os parâmetros de entrada
+	•	decidir quais são os resultados de saída
+	•	definir simplificações
+
+Tens de sair desta semana com isto resolvido
+	•	o projeto vai focar-se numa asa simplificada
+	•	inputs: ângulo de ataque, velocidade, área, curvatura, altura ao solo se quiseres
+	•	outputs: drag, downforce, eficiência aerodinâmica
+	•	sem CFD real
+	•	sem carro completo
+	•	sem regulamentos complexos
+
+Entrega da semana
+
+Um ficheiro tipo README.md com:
+	•	nome do projeto
+	•	objetivo
+	•	funcionalidades
+	•	tecnologias
+	•	limitações
+
+⸻
+
+Semana 2 — Preparar a base técnica
+
+Aqui montas o ambiente e a estrutura do projeto.
+
+O que fazes
+	•	criar a pasta do projeto
+	•	criar ambiente virtual
+	•	instalar bibliotecas
+	•	organizar ficheiros
+	•	criar primeira versão da aplicação
+
+Estrutura sugerida
+aerof1/
+│
+├── app.py
+├── model/
+│   ├── wing.py
+│   ├── physics.py
+│   └── optimizer.py
+│
+├── data/
+│   └── results.db
+│
+├── utils/
+│   └── storage.py
+│
+├── assets/
+│
+└── README.md
+Entrega da semana
+
+Ter a app a abrir, mesmo que ainda só diga “Projeto AeroF1”.
+
+⸻
+
+Semana 3 — Criar o modelo da asa
+
+Agora defines como vais representar a tua asa no código.
+
+O que fazes
+	•	criar uma classe ou estrutura para a asa
+	•	guardar parâmetros
+	•	validar valores
+	•	preparar funções auxiliares
+
+Exemplo de parâmetros
+	•	angle_of_attack
+	•	velocity
+	•	area
+	•	camber
+	•	air_density
+
+Entrega da semana
+
+Uma classe tipo WingConfig ou semelhante, já funcional.
+
+⸻
+
+Semana 4 — Implementar o motor de cálculo simplificado
+
+Aqui começas a dar “vida” ao projeto.
+
+O que fazes
+	•	implementar fórmulas simplificadas
+	•	calcular drag
+	•	calcular downforce
+	•	calcular eficiência
+
+Objetivo
+
+Não interessa que seja um modelo hiper-realista. Interessa que:
+	•	faça sentido
+	•	responda logicamente às alterações
+	•	seja consistente
+
+Por exemplo:
+	•	se aumentas ângulo de ataque, downforce sobe até certo ponto
+	•	drag também sobe
+	•	a eficiência muda consoante a combinação
+
+Entrega da semana
+
+Um script que recebe parâmetros e devolve métricas calculadas.
+
+⸻
+
+Semana 5 — Fazer testes básicos ao modelo
+
+Nesta fase validas se o sistema pelo menos se comporta de forma lógica.
+
+O que fazes
+	•	testar vários valores manualmente
+	•	ver se os resultados variam como esperado
+	•	corrigir absurdos
+	•	definir limites mínimos e máximos
+
+Exemplos de testes
+	•	velocidade baixa vs alta
+	•	ângulo pequeno vs grande
+	•	área pequena vs grande
+
+Entrega da semana
+
+Uma pequena tabela de testes e observações.
+
+⸻
+
+Semana 6 — Primeira interface com Streamlit
+
+Agora passas o projeto de “script” para “aplicação”.
+
+O que fazes
+	•	criar sliders
+	•	criar caixas de input
+	•	mostrar resultados no ecrã
+	•	apresentar métricas principais
+
+Interface mínima
+	•	slider para ângulo
+	•	slider para velocidade
+	•	slider para área
+	•	botão para calcular
+	•	mostrar drag, downforce e eficiência
+
+Entrega da semana
+
+Aplicação já utilizável numa primeira versão.
+
+⸻
+
+Semana 7 — Gráficos e visualização
+
+Aqui começas a dar-lhe mais qualidade visual.
+
+O que fazes
+	•	adicionar gráficos
+	•	comparar relações entre parâmetros e resultados
+	•	mostrar curvas
+
+Exemplos úteis
+	•	drag vs ângulo
+	•	downforce vs ângulo
+	•	eficiência vs velocidade
+	•	comparação entre duas configurações
+
+Entrega da semana
+
+Dashboard simples com gráficos básicos.
+
+⸻
+
+Semana 8 — Guardar resultados
+
+Agora o sistema deixa de ser só “mexer e ver”.
+
+O que fazes
+	•	guardar configurações testadas
+	•	guardar métricas calculadas
+	•	permitir consulta de histórico
+
+Podes usar
+	•	JSON se quiseres simplicidade
+	•	SQLite se quiseres algo mais sólido
+
+Entrega da semana
+
+Tabela com histórico de simulações.
+
+⸻
+
+Semana 9 — Comparação entre configurações
+
+Uma funcionalidade muito útil é poderes comparar setups.
+
+O que fazes
+	•	selecionar duas ou mais configurações
+	•	mostrar lado a lado
+	•	destacar melhor e pior valor em cada métrica
+
+Entrega da semana
+
+Painel de comparação.
+
+⸻
+
+Semana 10 — Implementar otimização simples
+
+Aqui entra a parte mais interessante de engenharia informática.
+
+O que fazes
+	•	criar um algoritmo de procura
+	•	definir intervalos para os parâmetros
+	•	testar combinações
+	•	guardar as melhores
+
+Melhor abordagem para começar
+
+Grid Search
+
+Exemplo:
+	•	ângulo: de 0 a 20
+	•	velocidade: intervalo fixo ou dado pelo utilizador
+	•	curvatura: vários níveis
+	•	área: vários níveis
+
+Depois o sistema testa tudo e devolve:
+	•	top 10 por downforce
+	•	top 10 por menor drag
+	•	top 10 por melhor equilíbrio
+
+Entrega da semana
+
+Botão “Otimizar” com resultados automáticos.
+
+⸻
+
+Semana 11 — Melhorar o critério de otimização
+
+Agora refinas a forma como escolhes o que é “melhor”.
+
+O que fazes
+	•	definir função objetivo
+	•	experimentar pesos diferentes
+	•	permitir ao utilizador escolher prioridade
+
+Exemplos
+	•	maximizar downforce
+	•	minimizar drag
+	•	maximizar eficiência
+	•	equilíbrio entre drag e downforce
+
+Entrega da semana
+
+O utilizador consegue escolher o objetivo da otimização.
+
+⸻
+
+Semana 12 — Melhorar a interface
+
+Aqui pegas no que já tens e tornas mais bonito e mais claro.
+
+O que fazes
+	•	organizar layout
+	•	melhorar nomes e labels
+	•	separar secções
+	•	mostrar alertas quando valores não fazem sentido
+	•	melhorar tabela de resultados
+
+Entrega da semana
+
+Aplicação com aspeto limpo e apresentável.
+
+⸻
+
+Semana 13 — Testes finais e correções
+
+Agora é a fase de ir caçando problemas.
+
+O que fazes
+	•	testar inputs extremos
+	•	testar erros
+	•	confirmar se não há crashes
+	•	rever fórmulas
+	•	rever armazenamento
+	•	limpar código
+
+Entrega da semana
+
+Versão estável.
+
+⸻
+
+Semana 14 — Documentação
+
+Muita gente faz o projeto e depois estraga tudo na apresentação. Aqui evitas isso.
+
+O que fazes
+	•	escrever README bem feito
+	•	explicar arquitetura
+	•	explicar modelo simplificado
+	•	explicar limitações
+	•	explicar como correr o projeto
+
+Entrega da semana
+
+Documentação pronta.
+
+⸻
+
+Semana 15 — Preparar apresentação
+
+Mesmo que seja só para mostrar a alguém ou meter no portefólio, convém preparar isto bem.
+
+O que fazes
+	•	tirar screenshots boas
+	•	preparar demonstração curta
+	•	resumir o que o projeto faz
+	•	destacar o que foi implementado
+	•	explicar decisões de simplificação
+
+Entrega da semana
+
+Projeto pronto para mostrar.
+
+⸻
+
+Ordem prática das prioridades
+
+Se te perderes, segue esta ordem:
+	1.	modelo da asa
+	2.	cálculo simplificado
+	3.	interface básica
+	4.	gráficos
+	5.	guardar resultados
+	6.	comparação
+	7.	otimização
+	8.	polimento
+
+Se fizeres isto por esta ordem, nunca ficas com um projeto “bonito mas vazio”.
+
+⸻
+
+Versão ainda mais realista
+
+Se achares que isto tudo é demasiado, corta o projeto em MVP + extensões.
+
+MVP
+
+O mínimo que tens mesmo de fazer:
+	•	definir parâmetros da asa
+	•	calcular drag e downforce
+	•	mostrar resultados
+	•	ter interface básica
+	•	ter pelo menos uma forma simples de comparação
+
+Extensões
+
+Se houver tempo:
+	•	histórico
+	•	otimização automática
+	•	exportação
+	•	relatórios
+	•	mais parâmetros
+	•	mais gráficos
+
+Isto é importante porque sozinho tens de proteger o projeto contra excesso de ambição.
+
+⸻
+
+Sugestão de calendário realista
+
+Se tiveres aulas e outras cenas ao mesmo tempo, eu faria assim:
+	•	Semanas 1 a 4: base e cálculo
+	•	Semanas 5 a 8: interface e visualização
+	•	Semanas 9 a 11: otimização
+	•	Semanas 12 a 15: melhorias, documentação e apresentação
+
+⸻
+
+O que eu te aconselho mesmo
+
+O segredo deste projeto não é ter a física mais avançada do mundo.
+É ter:
+	•	um sistema coerente
+	•	uma interface boa
+	•	resultados claros
+	•	uma parte de otimização interessante
+	•	explicação honesta das simplificações
+
+Se fizeres isso bem, o projeto já parece muito sólido.
